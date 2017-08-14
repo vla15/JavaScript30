@@ -1,26 +1,25 @@
-const playSound = event => {
-  const audio = document.querySelector(`audio[data-key='${event.keyCode}']`);
-  const key = document.querySelector(`div[data-key='${event.keyCode}']`);
-  if (!audio) {
+const playSound = e => {
+  const sound = document.querySelector(`audio[data-key='${e.keyCode}']`);
+  if (!sound) {
     return;
   }
+  const key = document.querySelector(`.key[data-key='${e.keyCode}']`);
   key.classList.add('playing');
-  audio.currentTime = 0;
-  audio.play();
+  sound.currentTime = 0;
+  sound.play();
 }
 
-const removeTransition = event => {
-  if (event.propertyName === 'transform') {
-    event.target.classList.remove('playing');
+const removeTransition = e => {
+  if (e.propertyName === 'transform') {
+    e.target.classList.remove('playing');
   }
 }
 
-const keys = document.querySelectorAll('.key')
+const keys = document.querySelectorAll('.key');
 
-keys.forEach(key => {
-  key.addEventListener('transitionend', removeTransition)
-})
+keys.forEach(e => {
+  e.addEventListener('transitionend', removeTransition);
+});
 
 
 document.body.addEventListener('keydown', playSound);
-
