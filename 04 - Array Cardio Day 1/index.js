@@ -67,7 +67,7 @@ const inventorAges = inventors.map(inventor => {
 const sortedPeople = people.sort((a, b) => {
   const aLast = a.split(', ')[0];
   const bLast = b.split(', ')[0];
-  return bLast < aLast;
+  return aLast > bLast ? 1 : -1;
 }) 
 
 console.log(sortedPeople);
