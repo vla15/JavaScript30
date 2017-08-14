@@ -14,7 +14,19 @@ const moveHands = () => {
   secHand.style.transform = `rotate(${secDegree}deg)`;
   minHand.style.transform = `rotate(${minDegree}deg)`;
   hourHand.style.transform = `rotate(${hourDegree}deg)`;
+  secs === 59 ? removeTransition(secHand) : enableTransition(secHand);
+  mins === 59 ? removeTransition(minHand) : enableTransition(minHand);
+  hours === 11 ? removeTransition(hourHand) : enableTransition(hourHand);
 }
 
+const removeTransition = (hand) => {
+  hand.style.transition = null;
+}
+
+const enableTransition = (hand) => {
+  hand.style.transition = 'all 0.05s';
+}
 
 setInterval(moveHands, 1000);
+
+moveHands();
