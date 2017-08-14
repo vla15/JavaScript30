@@ -3,7 +3,7 @@ const controls = document.querySelectorAll('.controls input')
 
 const handleChange = e => {
   const suffix = e.target.dataset.sizing || '';
-  document.documentElement.style.setProperty(`--${e.target.id}`, e.target.value + suffix);
+  document.documentElement.style.setProperty(`--${e.target.name}`, e.target.value + suffix);
 }
 
 
