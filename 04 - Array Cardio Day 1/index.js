@@ -22,25 +22,63 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+const oldInventors = inventors.filter(inventor => {
+  return inventor.year < 1600 && inventor.year >= 1499;
+})
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
+const inventorNamesFormatted = inventors.map(inventor => {
+  return inventor.first + ' ' + inventor.last;
+})
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 
+const oldestToYoungest = inventors.sort((a, b) => {
+  if (a.year > b.year) {
+    return 1;
+  } else if (a.year < b.year) {
+    return -1;
+  }
+})
+
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
 
+const inventorAge = inventors.reduce((a, b) => {
+  return a + b.passed - b.year;
+}, 0)
+
+
 // 5. Sort the inventors by years lived
+const inventorAges = inventors.map(inventor => {
+  return Object.assign(inventor, {age: inventor.passed - inventor.year});
+}).sort((a, b) => {
+  return b.age - a.age;
+})
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+ ["Boulevard de l'Amiral-Bruix", "Boulevard des Capucines", "Boulevard de la Chapelle", "Boulevard de Clichy", "Boulevard de l'Hôpital", "Boulevard des Italiens", "Boulevard de la Madeleine", "Boulevard de Magenta", "Boulevard de Rochechouart", "Boulevard de Sébastopol", "Boulevard de Strasbourg", "Boulevard de la Zone"]
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const sortedPeople = people.sort((a, b) => {
+  const aLast = a.split(', ')[0];
+  const bLast = b.split(', ')[0];
+  return bLast < aLast;
+}) 
+
+console.log(sortedPeople);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+const dataCount = data.reduce((a, b) => {
+  a[b] ? a[b]++ : a[b] = 1;
+  return a;
+}, {})
+
+console.log(dataCount);
