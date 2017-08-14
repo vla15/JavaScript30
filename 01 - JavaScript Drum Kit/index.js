@@ -22,5 +22,5 @@ keys.forEach(key => {
 })
 
 
-window.addEventListener('keydown', playSound);
+document.body.addEventListener('keydown', playSound);
 
