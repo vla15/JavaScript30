@@ -1,11 +1,20 @@
-const secondsHand = document.querySelector('.second-hand');
+const hourHand = document.querySelector('.hour-hand');
+const minHand = document.querySelector('.min-hand');
+const secHand = document.querySelector('.second-hand');
 
-const getSeconds = () => {
+
+const moveHands = () => {
   const date = new Date();
-  const seconds = date.getSeconds();
-  const secondsDegree = (seconds / 60) * 360;
-  secondsHand.style.transform = `rotate(${secondsDegree}deg)`
+  const secs = date.getSeconds();
+  const mins = date.getMinutes();
+  const hours = date.getHours();
+  const secDegree = ((secs / 60) * 360) + 90;
+  const minDegree = ((mins / 60) * 360) + 90;
+  const hourDegree = ((hours / 12) * 360) + 90;
+  secHand.style.transform = `rotate(${secDegree}deg)`;
+  minHand.style.transform = `rotate(${minDegree}deg)`;
+  hourHand.style.transform = `rotate(${hourDegree}deg)`;
 }
 
 
-setInterval(getSeconds, 1000);
+setInterval(moveHands, 1000);
