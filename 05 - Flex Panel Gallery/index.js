@@ -1,17 +1,22 @@
 const panel = document.querySelectorAll('.panel');
 
 const handleClick = function() {
-  panel.forEach(p => {
-    p.classList.remove('open-active');
-    p.classList.remove('open')
-  })
-  this.classList.add('open')
-  this.classList.add('open-active');
-  console.log(this);
+  this.classList.toggle('open');
+}
+
+const handleTransition = function (e) {
+  if (e.propertyName.includes('flex')) {
+    this.classList.toggle('open-active');
+  }
+  // this.classList.toggle('open-active');
 }
 
 panel.forEach(p => {
   p.addEventListener('click', handleClick)
+})
+
+panel.forEach(p => {
+  p.addEventListener('transitionend', handleTransition)
 })
 
 console.log(panel);
