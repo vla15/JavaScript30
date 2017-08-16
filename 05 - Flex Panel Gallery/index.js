@@ -8,7 +8,6 @@ const handleTransition = function (e) {
   if (e.propertyName.includes('flex')) {
     this.classList.toggle('open-active');
   }
-  // this.classList.toggle('open-active');
 }
 
 panel.forEach(p => {
@@ -18,5 +17,3 @@ panel.forEach(p => {
 panel.forEach(p => {
   p.addEventListener('transitionend', handleTransition)
 })
-
-console.log(panel);
